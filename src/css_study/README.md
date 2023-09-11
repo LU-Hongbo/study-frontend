@@ -130,6 +130,24 @@ footer {
 }
 ```
 
+#### 9.1 Flex Direction
+```css
+.container {
+    /* main-axis, from left to right */
+    flex-direction: row;
+    /* cross-axis, from top to bottom */
+    flex-direction: column;
+}
+
+.item {
+    flex-basis: 100px;
+}
+```
+
+
+
+
+
 
 
 
