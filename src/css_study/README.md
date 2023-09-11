@@ -1,6 +1,15 @@
 
 # Front-end
 
+## Section 7: Intermediate CSS
+
+### 7.2 CSS Positioning
+
+- Static: Default position
+- Relative: Relative to default position
+- Absolute: Relative to the nearest positioned ancestor or top left corner of webpage
+- Fixed: Relative to the top left corner of webpage and always float
+
 ## Section 8: Advanced CSS
 
 ### 8.0 CSS Display
@@ -95,6 +104,34 @@ footer {
     </div>
 </div>
 ```
+
+
+## Section 9: Flexbox
+
+### 9.0 Display Flex
+
+#### Float
+```css
+.one {
+    float: left;
+    width: 25%;
+}
+.two {
+    float: left;
+    width: 40%;
+}
+```
+
+#### Flexbox
+```css
+.container {
+    display: flex;
+    gap: 10px;
+}
+```
+
+
+
 
 
 
