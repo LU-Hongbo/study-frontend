@@ -24,3 +24,77 @@ footer {
 }
 ```
 
+### 8.2 Responsiveness
+
+#### 1. @media Query
+```css
+/* Breakpoint: If content is less than 600px, use internal render css */
+@media (max-width: 600px) {
+    div {
+        height: 100px;
+    }
+}
+/* Breakpoint: If content is over 600px and less than 900px, use internal render css */
+@media (min-width: 600px) and (max-width: 600px) {
+    div {
+        height: 100px;
+    }
+}
+```
+
+#### 2. CSS Grid
+```css
+.grid-container {
+    display: grid;
+    /* fr: fraction, means the weight of every element */
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 100px 200px 200px;
+}
+
+.first {
+    grid-column: span 2;
+}
+
+.card {
+    background-color: blue;
+}
+```
+
+#### 3. CSS Flexbox
+```css
+.flex-container {
+    display: flex;
+}
+
+.card {
+    flex: 1;
+}
+
+.first {
+    flex: 2;
+}
+
+.second {
+    flex: 0.5;
+}
+```
+
+#### 4. Bootstrap Framework
+```html
+<div class="container">
+    <div class="row">
+        <div class="card col-6">
+            Card
+        </div>
+        <div class="card col-2">
+            Card
+        </div>
+        <div class="card col-4">
+            Card
+        </div>
+    </div>
+</div>
+```
+
+
+
