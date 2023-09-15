@@ -144,7 +144,34 @@ footer {
 }
 ```
 
+#### 9.2 Flex Layout
+```css
+.item {
+    /* Bigger order number, righter item is */
+    order: 10;
+}
 
+.container {
+    flex-wrap: wrap;
+    flex-direction: column;
+    /* Or the following line */
+    flex-flow: column wrap;
+
+    /* Align with left, row based flex box */
+    justify-content: flex-start;
+    /* Align with right, row based flex box */
+    justify-content: flex-end;
+    /* First and last overlap with the edge */
+    justify-content: space-between;
+
+    /* Different direction comparing to justify-content */
+    align-items: flex-start;
+    /* Viewport height */
+    height: 70vh;
+    
+    /* We can also set align-items, and set align-self of an item */
+}
+```
 
 
 
