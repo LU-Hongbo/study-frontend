@@ -173,6 +173,11 @@ footer {
 }
 ```
 
+#### 9.3 Flex Sizing
+```css
+/* content width < width < flex-basis < min-width/max-width*/ 
+
+```
 
 
 
