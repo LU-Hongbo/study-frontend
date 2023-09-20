@@ -176,8 +176,26 @@ footer {
 #### 9.3 Flex Sizing
 ```css
 /* content width < width < flex-basis < min-width/max-width*/ 
-
 ```
+
+#### 10.0 Display Grid
+```css
+.container {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+}
+```
+
+
+
+
+
+
+
+
+
 
 
 
