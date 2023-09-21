@@ -98,9 +98,6 @@ footer {
         <div class="card col-2">
             Card
         </div>
-        <div class="card col-4">
-            Card
-        </div>
     </div>
 </div>
 ```
@@ -188,10 +185,36 @@ footer {
 }
 ```
 
+#### 10.1 Grid Sizing
+    1px: 1/96th inch
+    1pt: 1/72nd inch
+    1em: 100% of parent
+    1rem: 100% of root
+```css
+.container {
+    /* 1. Fixed size */
+    /*  rows / columns, equivalent to grid-template-columns and grid-template-rows */
+    grid-template: 100px 200px / 400px 800px;
 
+    /* 2. Auto size */
+    grid-template-columns: 100px auto;
+    grid-template-rows: 200px auto;
 
+    /* 3. Fractional size, ratio */
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 2fr;
 
+    /* 4. Minmax size, responsive in an area */
+    grid-template-columns: 200px 400px;
+    grid-template-rows: 200px minmax(400px, 800px);
 
+    /* 5. Repeat */
+    grid-template-columns: repeat(2, 100px);
+    grid-template-rows: repeat(3, 100px);
+    /* If no css take effect, use this */
+    grid-auto-rows: 300px;
+}
+```
 
 
 
