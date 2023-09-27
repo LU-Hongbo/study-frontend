@@ -190,6 +190,7 @@ footer {
     1pt: 1/72nd inch
     1em: 100% of parent
     1rem: 100% of root
+    1vh: 1% of view height
 ```css
 .container {
     /* 1. Fixed size */
@@ -216,8 +217,28 @@ footer {
 }
 ```
 
+#### 10.2 Grid Placement
 
+Definition: Container > Tracks > Cells
 
+```css
+.container {
+    /* Specify the width of the  */
+    grid-row-start: 1;
+    grid-column-start: 2;
+    grid-row-end: 3;
+    grid-column-end: 4;
+    
+    /* Equal to previous lines */
+    grid-area: 1 / 2 / 3 / 4;
+    
+    /* Grid span 1 */
+    grid-column: span 2;
+    
+    /* The bigger order is, the righter element is */
+    order: 1;
+}
+```
 
 
 
