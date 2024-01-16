@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Hongbo's front-end study
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Deleted previous project and tried to restart to learn front-end again.
+
+Hope this time will not stop.
 
 ## Available Scripts
 
