@@ -15,15 +15,8 @@ h1 {
     font-size: 5rem;
 }
 
-footer {
-    text-align: right;
+.creative {
     color: midnightblue;
-}
-
-.tile-image {
-    height: 200px;
-    float: left;
-    margin-right: 50px;
 }
 
 .card {
@@ -38,7 +31,14 @@ footer {
     float: right;
 }
 
-.creative {
+.tile-image {
+    height: 200px;
+    float: left;
+    margin-right: 50px;
+}
+
+footer {
+    text-align: right;
     color: midnightblue;
 }
 
