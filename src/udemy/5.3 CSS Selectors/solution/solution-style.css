@@ -1,7 +1,7 @@
 ol {
-  margin-left: -40px;
-  margin-top: -20px;
-  list-style-position: inside;
+    margin-left: -40px;
+    margin-top: -20px;
+    list-style-position: inside;
 }
 
 
@@ -9,26 +9,26 @@ ol {
 
 /* TODO 1: Set the CSS for all paragraph tags to "color: red;" */
 p {
-  color: red;
+    color: red;
 }
 
 /* TODO 2: Set the CSS for all elements with a class of "note" to "font-size: 20px;" */
 .note {
-  font-size: 20px;
+    font-size: 20px;
 }
 
 /* TODO 3: Set the CSS for the element with an id of "id-selector-demo" to "color: green;" */
 #id-selector-demo {
-  color: green;
+    color: green;
 }
 
 /* TODO 4: Set the CSS for the li elements that have the "value" attribute set to "4" to have "color: blue;" */
 li[value="4"] {
-  color: blue;
+    color: blue;
 }
 
 /* TODO 5: Set all elements to have "font-family: sans-serif;" */
 * {
-  text-align: center;
+    text-align: center;
 }
 
