@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <title>Flexbox Pricing Table</title>
@@ -11,9 +11,58 @@
             font-family: 'Sono', sans-serif;
         }
 
-        /* Hint: What can you do with a media query and flexbox? */
-        @media (max-width: 1250px) {
+        .pricing-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 2rem;
+        }
 
+        .pricing-plan {
+            flex: 1;
+            max-width: 400px;
+            padding: 20px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .plan-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .plan-price {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .plan-features {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .plan-features li {
+            margin-bottom: 20px;
+        }
+
+        .plan-button {
+            background-color: orangered;
+            color: white;
+            width: 70px;
+            height: 30px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 1250px) {
+            .pricing-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -22,13 +71,13 @@
 <div class="pricing-container">
     <div class="pricing-plan">
         <div class="plan-title">Basic</div>
-        <div class="plan-price">$9.99/month</div>
+        <div class="plan-price">$11.99/month</div>
         <ul class="plan-features">
             <li>✅ 10GB Storage</li>
             <li>✅ 1 User</li>
             <li>🚫 Support</li>
         </ul>
-        <button class="plan-button">Sign Up</a>
+        <button class="plan-button">Sign Up</button>
     </div>
     <div class="pricing-plan">
         <div class="plan-title">Standard</div>
@@ -38,7 +87,7 @@
             <li>✅ 5 Users</li>
             <li>✅ Phone &amp; Email Support</li>
         </ul>
-        <button class="plan-button">Sign Up</a>
+        <button class="plan-button">Sign Up</button>
     </div>
     <div class="pricing-plan">
         <div class="plan-title">Premium</div>
@@ -48,10 +97,9 @@
             <li>✅ 10 Users</li>
             <li>✅ 24/7 Support</li>
         </ul>
-        <button class="plan-button">Sign Up</a>
+        <button class="plan-button">Sign Up</button>
     </div>
 </div>
-
 </body>
 
 </html>
