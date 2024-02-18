@@ -3,12 +3,13 @@ const drumList = document.querySelectorAll(".drum");
 for (let i = 0; i < drumList.length; i++) {
     drumList[i].addEventListener("click", function () {
         makeSound(this.innerHTML);
+        buttonAnimation(this.innerHTML);
     });
 }
 
 document.addEventListener("keypress", function (event) {
-    console.log(event.key);
     makeSound(event.key);
+    buttonAnimation(event.key);
 });
 
 function makeSound(key) {
@@ -44,4 +45,14 @@ function makeSound(key) {
         default:
             console.log(key);
     }
+}
+
+function buttonAnimation(currentKey) {
+    const activeButton = document.querySelector("." + currentKey);
+
+    activeButton.classList.add("pressed");
+
+    setTimeout(function () {
+        activeButton.classList.remove("pressed");
+    }, 100);
 }
