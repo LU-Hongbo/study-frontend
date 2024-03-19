@@ -1,10 +1,10 @@
 import {useState} from 'react';
 
-import Player from "./components/Player.jsx";
-import GameBoard from "./components/GameBoard.jsx";
-import Log from "./components/Log.jsx";
+import Player from "./refer-components/Player.jsx";
+import GameBoard from "./refer-components/GameBoard.jsx";
+import Log from "./refer-components/Log.jsx";
 import {WINNING_COMBINATIONS} from "../../winning-combinations.js";
-import GameOver from "./components/GameOver.jsx";
+import GameOver from "./refer-components/GameOver.jsx";
 
 const PLAYERS = {
   X: "Player 1",
@@ -57,7 +57,7 @@ function deriveWinner(gameBoard, players) {
   return winner;
 }
 
-function App() {
+function ReferApp() {
   const [players, setPlayers] = useState(PLAYERS);
   const [gameTurns, setGameTurns] = useState([]);
 
@@ -116,4 +116,4 @@ function App() {
   )
 }
 
-export default App
+export default ReferApp
