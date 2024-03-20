@@ -1,6 +1,7 @@
 import {useState} from "react";
 
-function Player({name, symbol}) {
+function Player({initialName, symbol}) {
+  const [name, setName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
   function handleEdit() {
@@ -11,10 +12,14 @@ function Player({name, symbol}) {
     setIsEditing(false);
   }
 
+  function handleOnChange(event) {
+    setName(event.target.value);
+  }
+
   if (isEditing) {
     return (
       <span className="player">
-        <input type="text"/>
+        <input type="text" value={name} required onChange={handleOnChange}/>
         <span className="player-symbol">{symbol}</span>
         <button onClick={handleSave}>Save</button>
       </span>
@@ -23,7 +28,7 @@ function Player({name, symbol}) {
 
   return (
     <span className="player">
-      <span className="player-name">{name}</span>
+      <span className="player-initialName">{name}</span>
       <span className="player-symbol">{symbol}</span>
       <button onClick={handleEdit}>Edit</button>
     </span>
