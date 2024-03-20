@@ -6,7 +6,10 @@ function GameBoard({gameBoard, handleSelectSquare}) {
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
-                <button onClick={() => handleSelectSquare(rowIndex, colIndex)}>
+                <button
+                  disabled={gameBoard[rowIndex][colIndex]}
+                  onClick={() => handleSelectSquare(rowIndex, colIndex)}
+                >
                   {playerSymbol}
                 </button>
               </li>
