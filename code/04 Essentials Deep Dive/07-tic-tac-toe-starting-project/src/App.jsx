@@ -1,5 +1,5 @@
 import Player from "./components/Player.jsx";
-import {PLAYER, SYMBOL} from "./utils.js";
+import {getSymbol, PLAYER, SYMBOL} from "./utils.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
 
@@ -12,25 +12,19 @@ const gameBoard = [
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
 
-  function getSymbol() {
-    if (gameTurns.length === 0) return SYMBOL.X;
-    return gameTurns[0] === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
-  }
-
   function handleSelectSquare(row, col) {
-    const symbol = getSymbol();
+    const symbol = getSymbol(gameTurns);
 
     gameBoard[row][col] = symbol;
-    setGameTurns(prevTurns => {
-      return [
+    setGameTurns(prevTurns => [
         {
           symbol: symbol,
           row: row,
           col: col
         },
         ...prevTurns
-      ];
-    });
+      ]
+    );
   }
 
   return (
