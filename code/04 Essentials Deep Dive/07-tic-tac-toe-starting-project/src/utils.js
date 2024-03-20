@@ -53,5 +53,5 @@ export const SYMBOL = {
 
 export function getSymbol(gameTurns) {
   if (gameTurns.length === 0) return SYMBOL.X;
-  return gameTurns[0] === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
+  return gameTurns[0].symbol === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
 }
