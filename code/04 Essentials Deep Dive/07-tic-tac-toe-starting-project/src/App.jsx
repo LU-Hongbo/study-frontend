@@ -1,5 +1,5 @@
 import Player from "./components/Player.jsx";
-import {PLAYER} from "./constants.js";
+import {PLAYER, SYMBOL} from "./utils.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
 
@@ -13,8 +13,8 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]);
 
   function getSymbol() {
-    if (gameTurns.length === 0) return "X";
-    return gameTurns[0] === "X" ? "O" : "X";
+    if (gameTurns.length === 0) return SYMBOL.X;
+    return gameTurns[0] === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
   }
 
   function handleSelectSquare(row, col) {
@@ -37,8 +37,8 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName={PLAYER[0].name} symbol={PLAYER[0].symbol}/>
-          <Player initialName={PLAYER[1].name} symbol={PLAYER[1].symbol}/>
+          <Player initialName={PLAYER.first} symbol={SYMBOL.X}/>
+          <Player initialName={PLAYER.second} symbol={SYMBOL.O}/>
         </ol>
         <GameBoard gameBoard={gameBoard} handleSelectSquare={handleSelectSquare}/>
       </div>

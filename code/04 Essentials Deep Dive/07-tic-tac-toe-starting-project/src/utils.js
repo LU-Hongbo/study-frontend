@@ -41,13 +41,12 @@ export const WINNING_COMBINATIONS = [
   ],
 ];
 
-export const PLAYER = [
-  {
-    name: "Player 1",
-    symbol: "X"
-  },
-  {
-    name: "Player 2",
-    symbol: "O"
-  }
-]
+export const PLAYER = {
+  first: "Player 1",
+  second: "Player 2"
+}
+
+export const SYMBOL = {
+  X: "X",
+  O: "O"
+}
