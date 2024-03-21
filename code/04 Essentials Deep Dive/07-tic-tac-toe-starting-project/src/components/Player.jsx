@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-function Player({initialName, symbol}) {
+function Player({initialName, symbol, onChangeName}) {
   const [name, setName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -10,6 +10,7 @@ function Player({initialName, symbol}) {
 
   function handleSave() {
     setIsEditing(false);
+    onChangeName(symbol, name);
   }
 
   function handleOnChange(event) {

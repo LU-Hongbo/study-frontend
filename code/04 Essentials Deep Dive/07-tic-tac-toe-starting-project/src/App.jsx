@@ -19,25 +19,27 @@ function getSymbol(gameTurns) {
   return gameTurns[0].symbol === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
 }
 
-function getWinner(board) {
+function getWinner(board, players) {
   let winner;
   for (const combination of WINNING_COMBINATIONS) {
     const first = board[combination[0].row][combination[0].column];
     const second = board[combination[1].row][combination[1].column];
     const third = board[combination[2].row][combination[2].column];
-    if (first && first === second && first === third) winner = first;
+    if (first && first === second && first === third) winner = players[first];
   }
   return winner;
 }
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
+  const [players, setPlayers] = useState(PLAYERS);
+
+  const symbol = getSymbol(gameTurns);
   const gameBoard = getGameBoard(gameTurns);
-  const winner = getWinner(gameBoard);
+  const winner = getWinner(gameBoard, players);
   const isDraw = gameTurns.length === MAX_LENGTH && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
-    const symbol = getSymbol(gameTurns);
     setGameTurns(prevTurns => [
         {rowIndex: rowIndex, colIndex: colIndex, symbol: symbol},
         ...prevTurns
@@ -49,12 +51,21 @@ function App() {
     setGameTurns([]);
   }
 
+  function handlePlayerChangeName(symbol, newName) {
+    setPlayers(prevPlayers => {
+      return {
+        ...prevPlayers,
+        [symbol]: newName
+      }
+    });
+  }
+
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName={PLAYERS.X} symbol={SYMBOL.X}/>
-          <Player initialName={PLAYERS.O} symbol={SYMBOL.O}/>
+          <Player initialName={PLAYERS.X} symbol={SYMBOL.X} onChangeName={handlePlayerChangeName}/>
+          <Player initialName={PLAYERS.O} symbol={SYMBOL.O} onChangeName={handlePlayerChangeName}/>
         </ol>
         {(winner || isDraw) && <GameOver winner={winner} onRestart={handleRestart}/>}
         <GameBoard board={gameBoard} onSelectSquare={handleSelectSquare}/>
