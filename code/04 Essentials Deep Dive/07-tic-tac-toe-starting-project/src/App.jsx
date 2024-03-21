@@ -52,20 +52,28 @@ function App() {
   }
 
   function handlePlayerChangeName(symbol, newName) {
-    setPlayers(prevPlayers => {
-      return {
-        ...prevPlayers,
-        [symbol]: newName
-      }
-    });
+    setPlayers(prevPlayers => ({
+      ...prevPlayers,
+      [symbol]: newName
+    }));
   }
 
   return (
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName={PLAYERS.X} symbol={SYMBOL.X} isActive={currentSymbol === SYMBOL.X} onChangeName={handlePlayerChangeName}/>
-          <Player initialName={PLAYERS.O} symbol={SYMBOL.O} isActive={currentSymbol === SYMBOL.O} onChangeName={handlePlayerChangeName}/>
+          <Player
+            initialName={PLAYERS.X}
+            symbol={SYMBOL.X}
+            isActive={currentSymbol === SYMBOL.X}
+            onChangeName={handlePlayerChangeName}
+          />
+          <Player
+            initialName={PLAYERS.O}
+            symbol={SYMBOL.O}
+            isActive={currentSymbol === SYMBOL.O}
+            onChangeName={handlePlayerChangeName}
+          />
         </ol>
         {(winner || isDraw) && <GameOver winner={winner} onRestart={handleRestart}/>}
         <GameBoard board={gameBoard} onSelectSquare={handleSelectSquare}/>
