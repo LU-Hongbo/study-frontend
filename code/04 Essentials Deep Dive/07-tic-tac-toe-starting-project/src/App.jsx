@@ -48,7 +48,7 @@ function App() {
           <Player initialName={PLAYER.second} symbol={SYMBOL.O}/>
         </ol>
         {winner && <GameOver onRestart={handleRestart}/>}
-        <GameBoard board={gameBoard} handleSelectSquare={handleSelectSquare}/>
+        <GameBoard board={gameBoard} onSelectSquare={handleSelectSquare}/>
       </div>
       <Log turns={gameTurns}/>
     </main>
