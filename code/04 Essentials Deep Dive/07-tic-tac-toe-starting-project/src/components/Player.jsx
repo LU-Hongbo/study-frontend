@@ -1,8 +1,9 @@
 import {PLAYER} from "../constant.js";
 import {useState} from "react";
 
-function Player({symbol}) {
+function Player({symbol, isActive}) {
   const initialName = PLAYER[symbol];
+
   const [name, setName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
 
@@ -20,7 +21,7 @@ function Player({symbol}) {
 
   if (isEditing) {
     return (
-      <li>
+      <li className={isActive ? "active" : undefined}>
         <span className="player">
           <input type="text" value={name} required onChange={handleOnChange}/>
           <span className="player-symbol">{symbol}</span>
@@ -32,7 +33,7 @@ function Player({symbol}) {
     );
   }
   return (
-    <li>
+    <li className={isActive ? "active" : undefined}>
       <span className="player">
         <span className="player-name">{name}</span>
         <span className="player-symbol">{symbol}</span>

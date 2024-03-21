@@ -52,8 +52,8 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player symbol={SYMBOL.X}/>
-          <Player symbol={SYMBOL.O}/>
+          <Player symbol={SYMBOL.X} isActive={getSymbol(gameTurns) === SYMBOL.X}/>
+          <Player symbol={SYMBOL.O} isActive={getSymbol(gameTurns) === SYMBOL.O}/>
         </ol>
         {(winner || isDraw) && <GameOver winner={winner} onRestart={handleOnRestart}/>}
         <GameBoard board={gameBoard} onClickSquare={handleClickSquare}/>
