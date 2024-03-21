@@ -19,29 +19,38 @@ function getSymbol(gameTurns) {
   return gameTurns[0].symbol === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
 }
 
-function getWinner(gameBoard) {
+function getWinner(gameBoard, players) {
   let winner;
   for (let combination of WIN_COMBINATIONS) {
     const first = gameBoard[combination[0].row][combination[0].column];
     const second = gameBoard[combination[1].row][combination[1].column];
     const third = gameBoard[combination[2].row][combination[2].column];
-    if (first && first === second && first === third) winner = PLAYER[first];
+    if (first && first === second && first === third) winner = players[first];
   }
   return winner;
 }
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
+  const [players, setPlayers] = useState(PLAYER);
 
+  const currentSymbol = getSymbol(gameTurns);
   const gameBoard = getGameBoard(gameTurns);
-  const winner = getWinner(gameBoard);
+  const winner = getWinner(gameBoard, players);
   const isDraw = gameTurns.length === MAX_LENGTH && !winner;
 
   function handleClickSquare(rowIndex, columnIndex) {
     setGameTurns(prevTurns => [
-      {rowIndex: rowIndex, columnIndex: columnIndex, symbol: getSymbol(gameTurns)},
+      {rowIndex: rowIndex, columnIndex: columnIndex, symbol: currentSymbol},
       ...prevTurns
     ]);
+  }
+
+  function handleChangePlayerName(symbol, name) {
+    setPlayers(prevPlayers => ({
+      ...prevPlayers,
+      [symbol]: name
+    }));
   }
 
   function handleOnRestart() {
@@ -52,8 +61,8 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player symbol={SYMBOL.X} isActive={getSymbol(gameTurns) === SYMBOL.X}/>
-          <Player symbol={SYMBOL.O} isActive={getSymbol(gameTurns) === SYMBOL.O}/>
+          <Player symbol={SYMBOL.X} isActive={currentSymbol === SYMBOL.X} onChangeName={handleChangePlayerName}/>
+          <Player symbol={SYMBOL.O} isActive={currentSymbol === SYMBOL.O} onChangeName={handleChangePlayerName}/>
         </ol>
         {(winner || isDraw) && <GameOver winner={winner} onRestart={handleOnRestart}/>}
         <GameBoard board={gameBoard} onClickSquare={handleClickSquare}/>
