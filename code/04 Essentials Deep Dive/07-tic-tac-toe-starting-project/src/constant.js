@@ -46,7 +46,7 @@ export const SYMBOL = {
   O: "O"
 }
 
-export const PLAYER = {
+export const PLAYERS = {
   X: "Player 1",
   O: "Player 2"
 }

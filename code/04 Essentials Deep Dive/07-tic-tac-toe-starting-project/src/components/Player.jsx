@@ -1,8 +1,8 @@
-import {PLAYER} from "../constant.js";
+import {PLAYERS} from "../constant.js";
 import {useState} from "react";
 
 function Player({symbol, isActive, onChangeName}) {
-  const initialName = PLAYER[symbol];
+  const initialName = PLAYERS[symbol];
 
   const [name, setName] = useState(initialName);
   const [isEditing, setIsEditing] = useState(false);
