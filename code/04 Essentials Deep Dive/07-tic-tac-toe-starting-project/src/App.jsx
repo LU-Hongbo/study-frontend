@@ -1,5 +1,5 @@
 import Player from "./components/Player.jsx";
-import {INIT_GAME_BOARD, MAX_LENGTH, PLAYER, SYMBOL, WINNING_COMBINATIONS} from "./constant.js";
+import {INIT_GAME_BOARD, MAX_LENGTH, PLAYERS, SYMBOL, WINNING_COMBINATIONS} from "./constant.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
 import Log from "./components/Log.jsx";
@@ -53,8 +53,8 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName={PLAYER.first} symbol={SYMBOL.X}/>
-          <Player initialName={PLAYER.second} symbol={SYMBOL.O}/>
+          <Player initialName={PLAYERS.X} symbol={SYMBOL.X}/>
+          <Player initialName={PLAYERS.O} symbol={SYMBOL.O}/>
         </ol>
         {(winner || isDraw) && <GameOver winner={winner} onRestart={handleRestart}/>}
         <GameBoard board={gameBoard} onSelectSquare={handleSelectSquare}/>
