@@ -7,3 +7,9 @@ export const SYMBOL = {
   X: "X",
   O: "O"
 };
+
+export const INIT_GAME_BOARD = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+];
