@@ -1,13 +1,13 @@
-function GameBoard({gameBoard, handleSelectSquare}) {
+function GameBoard({board, handleSelectSquare}) {
   return (
     <ol id="game-board">
-      {gameBoard.map((row, rowIndex) => (
+      {board.map((row, rowIndex) => (
         <li key={rowIndex}>
           <ol>
             {row.map((playerSymbol, colIndex) => (
               <li key={colIndex}>
                 <button
-                  disabled={gameBoard[rowIndex][colIndex]}
+                  disabled={board[rowIndex][colIndex]}
                   onClick={() => handleSelectSquare(rowIndex, colIndex)}
                 >
                   {playerSymbol}

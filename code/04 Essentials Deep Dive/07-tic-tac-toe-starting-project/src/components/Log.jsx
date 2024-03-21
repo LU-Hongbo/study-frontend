@@ -1,7 +1,7 @@
-function Log({gameTurns}) {
+function Log({turns}) {
   return (
     <ol id="log">
-      {gameTurns.map(turn =>
+      {turns.map(turn =>
         <li key={`${turn.rowIndex} ${turn.colIndex}`}>
           {turn.symbol} clicked ({turn.rowIndex},{turn.colIndex})
         </li>

@@ -15,14 +15,9 @@ function App() {
 
   function handleSelectSquare(rowIndex, colIndex) {
     const symbol = getSymbol(gameTurns);
-
     gameBoard[rowIndex][colIndex] = symbol;
     setGameTurns(prevTurns => [
-        {
-          symbol: symbol,
-          rowIndex: rowIndex,
-          colIndex: colIndex
-        },
+        {rowIndex: rowIndex, colIndex: colIndex, symbol: symbol},
         ...prevTurns
       ]
     );
@@ -35,9 +30,9 @@ function App() {
           <Player initialName={PLAYER.first} symbol={SYMBOL.X}/>
           <Player initialName={PLAYER.second} symbol={SYMBOL.O}/>
         </ol>
-        <GameBoard gameBoard={gameBoard} handleSelectSquare={handleSelectSquare}/>
+        <GameBoard board={gameBoard} handleSelectSquare={handleSelectSquare}/>
       </div>
-      <Log gameTurns={gameTurns}/>
+      <Log turns={gameTurns}/>
     </main>
   );
 }
