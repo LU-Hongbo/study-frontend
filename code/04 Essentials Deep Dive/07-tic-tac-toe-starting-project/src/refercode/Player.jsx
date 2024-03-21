@@ -32,7 +32,7 @@ function Player({initialName, symbol, isActive, onChangeName}) {
   return (
     <li className={isActive ? "active" : undefined}>
     <span className="player">
-      <span className="player-initialName">{name}</span>
+      <span className="player-name">{name}</span>
       <span className="player-symbol">{symbol}</span>
       <button onClick={handleEdit}>Edit</button>
     </span>

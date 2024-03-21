@@ -1,5 +1,5 @@
 import Player from "./components/Player.jsx";
-import {INIT_GAME_BOARD, MAX_LENGTH, PLAYERS, SYMBOL, WINNING_COMBINATIONS} from "./constant.js";
+import {INIT_GAME_BOARD, MAX_LENGTH, PLAYERS, SYMBOL, WINNING_COMBINATIONS} from "./referConstant.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
 import Log from "./components/Log.jsx";
@@ -30,7 +30,7 @@ function getWinner(board, players) {
   return winner;
 }
 
-function App() {
+function ReferApp() {
   const [gameTurns, setGameTurns] = useState([]);
   const [players, setPlayers] = useState(PLAYERS);
 
