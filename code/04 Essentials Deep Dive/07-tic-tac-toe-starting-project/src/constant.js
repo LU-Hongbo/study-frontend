@@ -51,7 +51,8 @@ export const SYMBOL = {
   O: "O"
 }
 
-export function getSymbol(gameTurns) {
-  if (gameTurns.length === 0) return SYMBOL.X;
-  return gameTurns[0].symbol === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
-}
+export const INIT_GAME_BOARD = [
+  [null, null, null],
+  [null, null, null],
+  [null, null, null]
+];

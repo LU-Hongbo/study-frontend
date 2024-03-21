@@ -1,15 +1,9 @@
 import Player from "./components/Player.jsx";
-import {getSymbol, PLAYER, SYMBOL, WINNING_COMBINATIONS} from "./utils.js";
+import {INIT_GAME_BOARD, PLAYER, SYMBOL, WINNING_COMBINATIONS} from "./constant.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
 import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
-
-const INIT_GAME_BOARD = [
-  [null, null, null],
-  [null, null, null],
-  [null, null, null]
-];
 
 function getGameBoard(turns) {
   let board = [...INIT_GAME_BOARD.map(array => [...array])];
@@ -18,6 +12,11 @@ function getGameBoard(turns) {
     board[rowIndex][colIndex] = symbol;
   }
   return board;
+}
+
+function getSymbol(gameTurns) {
+  if (gameTurns.length === 0) return SYMBOL.X;
+  return gameTurns[0].symbol === SYMBOL.X ? SYMBOL.O : SYMBOL.X;
 }
 
 function getWinner(board) {
