@@ -2,7 +2,7 @@ import Player from "./components/Player.jsx";
 import {getSymbol, PLAYER, SYMBOL} from "./utils.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
-import Log from "./Log.jsx";
+import Log from "./components/Log.jsx";
 
 const gameBoard = [
   [null, null, null],
@@ -37,7 +37,7 @@ function App() {
         </ol>
         <GameBoard gameBoard={gameBoard} handleSelectSquare={handleSelectSquare}/>
       </div>
-      <Log gameTurns={gameTurns} />
+      <Log gameTurns={gameTurns}/>
     </main>
   );
 }
