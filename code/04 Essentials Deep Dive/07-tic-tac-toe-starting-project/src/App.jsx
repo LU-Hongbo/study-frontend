@@ -53,7 +53,7 @@ function App() {
     }));
   }
 
-  function handleOnRestart() {
+  function handleRestart() {
     setGameTurns([]);
   }
 
@@ -64,7 +64,7 @@ function App() {
           <Player symbol={SYMBOL.X} isActive={currentSymbol === SYMBOL.X} onChangeName={handleChangePlayerName}/>
           <Player symbol={SYMBOL.O} isActive={currentSymbol === SYMBOL.O} onChangeName={handleChangePlayerName}/>
         </ol>
-        {(winner || isDraw) && <GameOver winner={winner} onRestart={handleOnRestart}/>}
+        {(winner || isDraw) && <GameOver winner={winner} onRestart={handleRestart}/>}
         <GameBoard board={gameBoard} onClickSquare={handleClickSquare}/>
       </div>
       <Log turns={gameTurns}/>
