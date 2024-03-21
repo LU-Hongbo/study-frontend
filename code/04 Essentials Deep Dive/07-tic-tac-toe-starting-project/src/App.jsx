@@ -34,14 +34,14 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]);
   const [players, setPlayers] = useState(PLAYERS);
 
-  const symbol = getSymbol(gameTurns);
+  const currentSymbol = getSymbol(gameTurns);
   const gameBoard = getGameBoard(gameTurns);
   const winner = getWinner(gameBoard, players);
   const isDraw = gameTurns.length === MAX_LENGTH && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameTurns(prevTurns => [
-        {rowIndex: rowIndex, colIndex: colIndex, symbol: symbol},
+        {rowIndex: rowIndex, colIndex: colIndex, symbol: currentSymbol},
         ...prevTurns
       ]
     );
@@ -64,8 +64,8 @@ function App() {
     <main>
       <div id="game-container">
         <ol id="players" className="highlight-player">
-          <Player initialName={PLAYERS.X} symbol={SYMBOL.X} onChangeName={handlePlayerChangeName}/>
-          <Player initialName={PLAYERS.O} symbol={SYMBOL.O} onChangeName={handlePlayerChangeName}/>
+          <Player initialName={PLAYERS.X} symbol={SYMBOL.X} isActive={currentSymbol === SYMBOL.X} onChangeName={handlePlayerChangeName}/>
+          <Player initialName={PLAYERS.O} symbol={SYMBOL.O} isActive={currentSymbol === SYMBOL.O} onChangeName={handlePlayerChangeName}/>
         </ol>
         {(winner || isDraw) && <GameOver winner={winner} onRestart={handleRestart}/>}
         <GameBoard board={gameBoard} onSelectSquare={handleSelectSquare}/>
