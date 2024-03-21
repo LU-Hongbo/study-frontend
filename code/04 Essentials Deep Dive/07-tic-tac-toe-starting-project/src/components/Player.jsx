@@ -1,12 +1,19 @@
-function Player() {
+import {PLAYER} from "../constant.js";
+
+function Player({symbol}) {
+  const name = PLAYER[symbol];
+
   return (
     <span className="player">
       <span className="player-name">
-        TEST NAME
+        {name}
       </span>
       <span className="player-symbol">
-        T
+        {symbol}
       </span>
+      <button>
+        Edit
+      </button>
     </span>
   );
 }
