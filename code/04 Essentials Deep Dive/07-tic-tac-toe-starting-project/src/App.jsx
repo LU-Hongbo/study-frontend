@@ -5,11 +5,20 @@ import {useState} from "react";
 import Log from "./components/Log.jsx";
 import GameOver from "./components/GameOver.jsx";
 
-const gameBoard = [
+const INIT_GAME_BOARD = [
   [null, null, null],
   [null, null, null],
   [null, null, null]
 ];
+
+function getGameBoard(turns) {
+  let board = [...INIT_GAME_BOARD.map(array => [...array])];
+  for (const turn of turns) {
+    const {rowIndex, colIndex, symbol} = turn;
+    board[rowIndex][colIndex] = symbol;
+  }
+  return board;
+}
 
 function getWinner(board) {
   let winner;
@@ -24,11 +33,11 @@ function getWinner(board) {
 
 function App() {
   const [gameTurns, setGameTurns] = useState([]);
+  const gameBoard = getGameBoard(gameTurns);
   const winner = getWinner(gameBoard);
 
   function handleSelectSquare(rowIndex, colIndex) {
     const symbol = getSymbol(gameTurns);
-    gameBoard[rowIndex][colIndex] = symbol;
     setGameTurns(prevTurns => [
         {rowIndex: rowIndex, colIndex: colIndex, symbol: symbol},
         ...prevTurns
