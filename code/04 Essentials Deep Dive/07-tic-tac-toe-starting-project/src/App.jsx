@@ -1,5 +1,5 @@
 import Player from "./components/Player.jsx";
-import {INIT_GAME_BOARD, PLAYER, SYMBOL, WINNING_COMBINATIONS} from "./constant.js";
+import {INIT_GAME_BOARD, MAX_LENGTH, PLAYER, SYMBOL, WINNING_COMBINATIONS} from "./constant.js";
 import GameBoard from "./components/GameBoard.jsx";
 import {useState} from "react";
 import Log from "./components/Log.jsx";
@@ -34,6 +34,7 @@ function App() {
   const [gameTurns, setGameTurns] = useState([]);
   const gameBoard = getGameBoard(gameTurns);
   const winner = getWinner(gameBoard);
+  const isDraw = gameTurns.length === MAX_LENGTH && !winner;
 
   function handleSelectSquare(rowIndex, colIndex) {
     const symbol = getSymbol(gameTurns);
@@ -55,7 +56,7 @@ function App() {
           <Player initialName={PLAYER.first} symbol={SYMBOL.X}/>
           <Player initialName={PLAYER.second} symbol={SYMBOL.O}/>
         </ol>
-        {winner && <GameOver onRestart={handleRestart}/>}
+        {(winner || isDraw) && <GameOver winner={winner} onRestart={handleRestart}/>}
         <GameBoard board={gameBoard} onSelectSquare={handleSelectSquare}/>
       </div>
       <Log turns={gameTurns}/>

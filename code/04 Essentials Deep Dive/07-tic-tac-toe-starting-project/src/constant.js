@@ -56,3 +56,5 @@ export const INIT_GAME_BOARD = [
   [null, null, null],
   [null, null, null]
 ];
+
+export const MAX_LENGTH = 9;
