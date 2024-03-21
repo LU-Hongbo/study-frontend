@@ -1,7 +1,35 @@
 import {PLAYER} from "../constant.js";
+import {useState} from "react";
 
 function Player({symbol}) {
-  const name = PLAYER[symbol];
+  const [isEditing, setIsEditing] = useState(false);
+  const [name, setName] = useState(PLAYER[symbol]);
+
+  function handleChange(event) {
+    setName(event.target.value);
+  }
+
+  function handleEdit() {
+    setIsEditing(true);
+  }
+
+  function handleSave() {
+    setIsEditing(false);
+  }
+
+  if (isEditing) {
+    return (
+      <span className="player">
+        <input type="text" required value={name} onChange={handleChange}/>
+        <span className="player-symbol">
+          {symbol}
+        </span>
+        <button onClick={handleSave}>
+          Save
+        </button>
+      </span>
+    );
+  }
 
   return (
     <span className="player">
@@ -11,7 +39,7 @@ function Player({symbol}) {
       <span className="player-symbol">
         {symbol}
       </span>
-      <button>
+      <button onClick={handleEdit}>
         Edit
       </button>
     </span>
