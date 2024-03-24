@@ -1,11 +1,10 @@
-import {calculateInvestmentResults, formatter} from "../util/investment.js";
+import {calculateInvestment, formatter} from "../util/investment.js";
 
 function Results({input}) {
-  const resultsData = calculateInvestmentResults(input);
-  const initialInvestment =
-    resultsData[0].valueEndOfYear
-    - resultsData[0].interest
-    - resultsData[0].annualInvestment;
+  const resultList = calculateInvestment(input);
+  const firstYear = resultList[0]
+  const initialInvestment = firstYear.totalAmount - firstYear.investment - firstYear.interest;
+  const annualInvestment = firstYear.investment;
 
   return (
     <table id="result">
@@ -19,24 +18,23 @@ function Results({input}) {
       </tr>
       </thead>
       <tbody>
-      {resultsData.map(yearData => {
-
-        const totalInterest =
-          yearData.valueEndOfYear
-          - yearData.annualInvestment * yearData.year
-          - initialInvestment;
-
-        const totalAmountInvested =
-          yearData.valueEndOfYear
-          - totalInterest;
+      {resultList.map(result => {
+        // Investment Value
+        const totalAmount = result.totalAmount;
+        // Interest (Year)
+        const annualInterest = result.interest;
+        // Invested Capital
+        const totalInvestment = initialInvestment + annualInvestment * result.year;
+        // Total Interest
+        const totalInterest = totalAmount - totalInvestment;
 
         return (
-          <tr key={yearData.year}>
-            <td>{yearData.year}</td>
-            <td>{formatter.format(yearData.valueEndOfYear)}</td>
-            <td>{formatter.format(yearData.interest)}</td>
+          <tr key={result.year}>
+            <td>{result.year}</td>
+            <td>{formatter.format(totalAmount)}</td>
+            <td>{formatter.format(annualInterest)}</td>
             <td>{formatter.format(totalInterest)}</td>
-            <td>{formatter.format(totalAmountInvested)}</td>
+            <td>{formatter.format(totalInvestment)}</td>
           </tr>
         )
       })}
