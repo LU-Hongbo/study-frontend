@@ -5,38 +5,45 @@ function TimerChallenge({title, targetTime}) {
   const timer = useRef();
   const dialog = useRef();
 
-  const [timerStarted, setTimeStarted] = useState(false);
-  const [timerExpired, setTimeExpired] = useState(false);
+  const targetTimeInMS = targetTime * 1000;
+  const [remainingTime, setRemainingTime] = useState(targetTimeInMS);
+  const isActive = remainingTime > 0 && remainingTime < targetTimeInMS;
+
+  if (remainingTime <= 0) {
+    clearInterval(timer.current);
+    dialog.current.open();
+  }
+
+  function handleReset() {
+    setRemainingTime(targetTimeInMS);
+  }
 
   function handleStart() {
-    timer.current = setTimeout(() => {
-      setTimeExpired(true);
-      dialog.current.showModal();
-    }, targetTime * 1000);
-
-    setTimeStarted(true);
+    timer.current = setInterval(() => {
+      setRemainingTime(prevRemainingTime => prevRemainingTime - 10);
+    }, 10);
   }
 
   function handleStop() {
-    clearTimeout(timer.current);
+    dialog.current.open();
+    clearInterval(timer.current);
   }
 
   return (
     <>
-      <ResultModal ref={dialog} targetTime={targetTime} result="lost"/>
+      <ResultModal ref={dialog} targetTime={targetTime} remainingTime={remainingTime} onReset={handleReset}/>
       <section className="challenge">
         <h2>{title}</h2>
-        {timerExpired && <p>You lost</p>}
         <p className="challenge-time">
           {targetTime} second{targetTime > 1 ? "s" : ""}
         </p>
         <p>
-          <button onClick={timerStarted ? handleStop : handleStart}>
-            {timerStarted ? "Stop" : "Start"} Challenge
+          <button onClick={isActive ? handleStop : handleStart}>
+            {isActive ? "Stop" : "Start"} Challenge
           </button>
         </p>
-        <p className={timerStarted ? "active" : undefined}>
-          {timerStarted ? "Time is running..." : "Timer inactive"}
+        <p className={isActive ? "active" : undefined}>
+          {isActive ? "Time is running..." : "Timer inactive"}
         </p>
       </section>
     </>
