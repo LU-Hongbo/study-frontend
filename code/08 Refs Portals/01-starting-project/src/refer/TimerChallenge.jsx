@@ -10,12 +10,7 @@ function TimerChallenge({mode, time}) {
   const isActive = remainingTime > 0 && remainingTime < timeInMS;
 
   if (remainingTime <= 0) {
-    clearInterval(timer.current);
-    dialog.current.open();
-  }
-
-  function onReset() {
-   setRemainingTime(timeInMS);
+    onStop();
   }
 
   function onStart() {
@@ -29,6 +24,10 @@ function TimerChallenge({mode, time}) {
     dialog.current.open();
   }
 
+  function onReset() {
+    setRemainingTime(timeInMS);
+  }
+
   return (
     <>
       <ResultModal ref={dialog} time={time} remainingTime={remainingTime} onReset={onReset}/>
@@ -37,12 +36,11 @@ function TimerChallenge({mode, time}) {
         <p className="challenge-time">
           {time} second{time > 1 ? "s" : ""}
         </p>
-        <button onClick={isActive ? onStop : onStart}>
-          {isActive ? "Stop" : "Start"} Challenge
-        </button>
-        <p className={isActive ? "active" : undefined}>
-          {isActive ? "Time is running..." : "Timer inactive"}
-        </p>
+        {!isActive && <button onClick={onStart}>Start Challenge</button>}
+        {!isActive && <p>Timer inactive</p>}
+
+        {isActive && <button onClick={onStop}>Stop Challenge</button>}
+        {isActive && <p className="active">Timer active</p>}
       </section>
     </>
   );
