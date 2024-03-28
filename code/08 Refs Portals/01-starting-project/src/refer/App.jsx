@@ -1,15 +1,15 @@
-import Player from './refer/Player.jsx';
-import TimerChallenge from "./refer/TimerChallenge.jsx";
+import Player from "./components/Player.jsx";
+import TimerChallenge from "./components/TimerChallenge.jsx";
 
 function App() {
   return (
     <>
-      <Player />
+      <Player/>
       <div id="challenges">
-        <TimerChallenge title="Easy" targetTime={1}/>
-        <TimerChallenge title="Not easy" targetTime={5}/>
-        <TimerChallenge title="Getting tough" targetTime={10}/>
-        <TimerChallenge title="Pros only" targetTime={15}/>
+        <TimerChallenge mode="easy" time="1"/>
+        <TimerChallenge mode="not easy" time="5"/>
+        <TimerChallenge mode="tough" time="10"/>
+        <TimerChallenge mode="pros only" time="15"/>
       </div>
     </>
   );

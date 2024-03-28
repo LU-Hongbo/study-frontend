@@ -1,6 +1,6 @@
-import {useState, useRef} from "react";
+import {useRef, useState} from "react";
 
-export default function Player() {
+function Player() {
   const refName = useRef();
   const [name, setName] = useState(null);
 
@@ -12,9 +12,11 @@ export default function Player() {
     <section id="player">
       <h2>Welcome {name ?? "unknown entity"}</h2>
       <p>
-        <input ref={refName} type="text"/>
-        <button onClick={handleClick}>Set Name</button>
+        <input type="text" ref={refName}/>
+        <button onClick={handleClick}>Set name</button>
       </p>
     </section>
   );
 }
+
+export default Player;
